@@ -1,0 +1,32 @@
+{
+  "books": {
+    "book1": {
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "publishedYear": 1925,
+      "genre": "Classic",
+      "availability": true,
+      "image": "https://example.com/gatsby.jpg"
+    },
+    "book2": {
+      "title": "1984",
+      "author": "George Orwell",
+      "publishedYear": 1949,
+      "genre": "Dystopian",
+      "availability": false,
+      "image": "https://example.com/1984.jpg"
+    }
+  },
+  "members": {
+    "member1": {
+      "name": "Alice Johnson",
+      "active": true,
+      "membershipDate": "2023-03-15"
+    },
+    "member2": {
+      "name": "Bob Smith",
+      "active": false,
+      "membershipDate": "2021-09-10"
+    }
+  }
+}

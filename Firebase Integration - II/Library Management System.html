@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+    <script src="functionality.js"></script>
+    <style>
+        #container, #displayContainer {
+            margin: auto;
+            width: 70%;
+            display: flex;
+            gap: 50px
+        }
+
+        #users,
+        #books {
+            width: 50%;
+            background-color: blanchedalmond;
+            padding: 15px;
+            margin: 5px;
+            border-radius: 5px;
+            border: 1px solid burlywood;
+        }
+
+        fieldset {
+            background-color: aliceblue;
+        }
+        #displayuser,
+        #displaybooks {
+            width: 70%;
+            background-color: rgb(132, 150, 239);
+            padding: 15px;
+            margin: 5px;
+            border-radius: 5px;
+            border: 1px solid rgb(18, 41, 250);
+            margin-top: 20px;
+        }
+        #users-list,
+        #books-list{
+            background-color: aliceblue;
+            width: 100%;
+            
+        }
+        #filtering{
+            margin: auto;
+            width: 70%;
+            display: flex;
+            gap: 50px
+        }
+        .filter-section {
+            margin-top: 20px;
+            background-color: lightyellow;
+            padding: 10px;
+            border-radius: 5px;
+            width: 70%;
+            border: 1px solid rgb(29, 29, 7);
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <h1>Library Management System</h1>
+    </center>
+    <div id="container">
+        <div id="users">
+            <center>
+                <h1>Add Users</h1>
+            </center>
+            <fieldset>
+                <legend>Name:</legend>
+                <input type="text" id="name" placeholder="Enter Name">
+            </fieldset><br>
+            <fieldset>
+                <legend>Membership Date</legend>
+                <input type="date" name="" id="membership">
+            </fieldset><br>
+            <fieldset>
+                <legend>Status</legend>
+                <select name="" id="active">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+            </fieldset><br><br>
+            <button onclick="user()">Add User</button>
+            <button onclick="displayUsers()">All Users Details</button>
+        </div>
+
+        <div id="books">
+            <center>
+                <h1>Add Books</h1>
+            </center>
+            <fieldset>
+                <legend>Author Name</legend>
+                <input type="text" name="" id="author">
+            </fieldset>
+            <fieldset>
+                <legend>Genre</legend>
+                <input type="text" name="" id="book">
+            </fieldset>
+            <fieldset>
+                <legend>Year</legend>
+                <input type="number" name="" id="publishedYear">
+            </fieldset>
+            <fieldset>
+                <legend>Availability</legend>
+                <select name="" id="availability">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+            </fieldset>
+            <fieldset>
+                <legend>Title</legend>
+                <input type="text" name="" id="title">
+            </fieldset>
+            <br>
+            <button onclick="book()">Add Books</button>
+            <button onclick="displayBooks()">Books Details</button>
+        </div>
+    </div>
+
+    <!-- Filter Section for Users -->
+    <div id="filtering">
+        <div class="filter-section">
+        <h3>Filter Users</h3>
+        <fieldset>
+            <legend>Status</legend>
+            <select id="user-status">
+                <option value="">Select Active Status</option>
+                <option value="true">Active</option>
+                <option value="false">Inactive</option>
+            </select>
+        </fieldset><br>
+        <fieldset>
+            <legend>Membership Date</legend>
+            <input type="date" id="user-membership-date">
+        </fieldset><br><br>
+        <button onclick="applyUserFilters()">Apply User Filters</button>
+    </div>
+
+    <!-- Filter Section for Books -->
+    <div class="filter-section">
+        <h3>Filter Books</h3>
+        <fieldset>
+            <legend>Genre</legend>
+            <input type="text" id="book-genre">
+        </fieldset><br>
+        <fieldset>
+            <legend>Author</legend>
+            <input type="text" id="book-author">
+        </fieldset><br>
+        <fieldset>
+            <legend>Availability</legend>
+            <select id="book-availability">
+                <option value="">Select Availability</option>
+                <option value="true">Available</option>
+                <option value="false">Not Available</option>
+            </select>
+        </fieldset><br><br>
+        <button onclick="applyBookFilters()">Apply Book Filters</button>
+    </div>
+    </div>
+
+    <div id="displayContainer">
+        <div id="displayuser">
+            <center><h2>Users List</h2></center>
+            <table id="users-list" border="1">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Membership Date</th>
+                        <th>Active</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div id="displaybooks">
+            <center><h2>Books List</h2></center>
+            <table id="books-list" border="1">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Genre</th>
+                        <th>Year</th>
+                        <th>Available</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

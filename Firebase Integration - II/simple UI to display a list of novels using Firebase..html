@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>simple UI to display a list of novels using Firebase.</title>
+    <style>
+        #container {
+            margin: auto;
+            width: 70%;
+            gap: 50px;
+            background-color: rgb(201, 202, 201);
+            padding: 20px;
+            border: 2px solid black;
+        }
+         table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #3c3e3c;
+        color: white;
+    }
+       
+    </style>
+</head>
+
+<body>
+    <center>
+        <h1>simple UI to display a list of novels using Firebase.</h1>
+    </center>
+
+    <div id="container">
+        <div>
+            <input type="text" id="book-search" placeholder="Search by title or author">
+            <select id="book-genre">
+                <option value="">Select Genre</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Mystery">Mystery</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Thriller">Thriller</option>
+            </select>
+            <input type="text" id="book-author" placeholder="Search by author">
+            <select id="book-availability">
+                <option value="">Select Availability</option>
+                <option value="true">Available</option>
+                <option value="false">Not Available</option>
+            </select>
+            <select id="book-year">
+                <option value="">Select Year</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2019">2019</option>
+            </select><br>
+            
+            <button onclick="applyBookFilters()">Apply Filters</button><br>
+            <button onclick="sortBooks('asc')">Sort by Price Ascending</button><br>
+            <button onclick="sortBooks('desc')">Sort by Price Descending</button>
+        </div>
+
+        <div>
+            <table id="books-list">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Genre</th>
+                    <th>Year</th>
+                    <th>Price</th>
+                    <th>Availability</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        </div>
+
+    </div>
+</body>
+
+</html>
+
+<script>
+   async function displayBooks(filters = {}, sort = 'asc', searchQuery = '') {
+    const res = await fetch('https://masaipractice-default-rtdb.asia-southeast1.firebasedatabase.app/novel.json');
+    const data = await res.json();
+
+    const tableBody = document.querySelector('#books-list tbody');
+    tableBody.innerHTML = "";
+
+    // Filter data based on filters
+    const filteredData = Object.values(data).filter(book => {
+        if (filters.genre && book.genre !== filters.genre) return false;
+        if (filters.author && book.author && !book.author.toLowerCase().includes(filters.author.toLowerCase())) return false;
+        if (filters.availability !== undefined && book.availability !== filters.availability) return false;
+        if (filters.year && book.release_year !== filters.year) return false;
+        if (searchQuery && !book.title.toLowerCase().includes(searchQuery.toLowerCase()) && !book.author.toLowerCase().includes(searchQuery.toLowerCase())) {
+            return false;
+        }
+        return true;
+    });
+
+    // Sort data by price
+    const sortedData = filteredData.sort((a, b) => {
+        if (sort === 'asc') {
+            return a.price - b.price;
+        } else {
+            return b.price - a.price;
+        }
+    });
+
+    // Render the filtered and sorted data into the table
+    sortedData.forEach(book => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${book.title}</td>
+            <td>${book.author}</td>
+            <td>${book.genre}</td>
+            <td>${book.release_year}</td> 
+            <td>${book.price}</td>
+            <td>${book.availability ? 'Yes' : 'No'}</td>
+        `;
+        tableBody.appendChild(row);
+    });
+}
+
+function applyBookFilters() {
+    // Get the selected filter values
+    const genre = document.getElementById('book-genre').value;
+    const author = document.getElementById('book-author').value;
+    const availability = document.getElementById('book-availability').value;
+    const year = document.getElementById('book-year').value;
+    const searchQuery = document.getElementById('book-search').value.trim();
+
+    // Prepare filters object based on user input
+    const filters = {
+        genre: genre || undefined,
+        author: author || undefined,
+        availability: availability ? (availability === "true") : undefined,
+        year: year || undefined
+    };
+
+    // Apply filters and fetch the data
+    displayBooks(filters, 'asc', searchQuery); // Default to ascending sort
+}
+
+function sortBooks(sortOrder) {
+    const filters = {}; // You can pass existing filters here if needed
+    const searchQuery = document.getElementById('book-search').value.trim();
+    displayBooks(filters, sortOrder, searchQuery);
+}
+
+window.onload = function () {
+    displayBooks(); // Display books on initial load
+};
+
+</script>

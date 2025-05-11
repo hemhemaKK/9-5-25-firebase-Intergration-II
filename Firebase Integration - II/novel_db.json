@@ -1,0 +1,164 @@
+{
+  "novel": [
+    {
+      "title": "The Great Adventure",
+      "author": "John Doe",
+      "price": 19.99,
+      "release_year": 2020,
+      "genre": "Adventure",
+      "availability": true
+    },
+    {
+      "title": "Mystery of the Lost World",
+      "author": "Jane Smith",
+      "price": 15.99,
+      "release_year": 2021,
+      "genre": "Mystery",
+      "availability": false
+    },
+    {
+      "title": "The Journey Begins",
+      "author": "Mark Johnson",
+      "price": 25.00,
+      "release_year": 2022,
+      "genre": "Fantasy",
+      "availability": true
+    },
+    {
+      "title": "The Last Escape",
+      "author": "Emily White",
+      "price": 18.50,
+      "release_year": 2019,
+      "genre": "Thriller",
+      "availability": true
+    },
+    {
+      "title": "The Silent Forest",
+      "author": "Lucas Green",
+      "price": 22.99,
+      "release_year": 2021,
+      "genre": "Adventure",
+      "availability": false
+    },
+    {
+      "title": "The Secret Code",
+      "author": "Alice Brown",
+      "price": 17.50,
+      "release_year": 2020,
+      "genre": "Mystery",
+      "availability": true
+    },
+    {
+      "title": "Through the Darkness",
+      "author": "Michael Stone",
+      "price": 30.00,
+      "release_year": 2022,
+      "genre": "Fantasy",
+      "availability": false
+    },
+    {
+      "title": "Edge of Reality",
+      "author": "Olivia Harris",
+      "price": 20.00,
+      "release_year": 2019,
+      "genre": "Thriller",
+      "availability": true
+    },
+    {
+      "title": "The Lost Kingdom",
+      "author": "David King",
+      "price": 24.99,
+      "release_year": 2021,
+      "genre": "Adventure",
+      "availability": false
+    },
+    {
+      "title": "Shadows in the Mist",
+      "author": "Sophia Clark",
+      "price": 18.99,
+      "release_year": 2022,
+      "genre": "Mystery",
+      "availability": true
+    },
+    {
+      "title": "The Hidden Path",
+      "author": "William Scott",
+      "price": 21.50,
+      "release_year": 2020,
+      "genre": "Fantasy",
+      "availability": true
+    },
+    {
+      "title": "Final Hour",
+      "author": "Charlotte Lee",
+      "price": 28.00,
+      "release_year": 2021,
+      "genre": "Thriller",
+      "availability": false
+    },
+    {
+      "title": "Wings of Fire",
+      "author": "Benjamin Turner",
+      "price": 23.99,
+      "release_year": 2022,
+      "genre": "Adventure",
+      "availability": true
+    },
+    {
+      "title": "Into the Abyss",
+      "author": "Grace Walker",
+      "price": 26.50,
+      "release_year": 2020,
+      "genre": "Mystery",
+      "availability": false
+    },
+    {
+      "title": "Fury of the Seas",
+      "author": "Jack Robinson",
+      "price": 29.00,
+      "release_year": 2021,
+      "genre": "Fantasy",
+      "availability": true
+    },
+    {
+      "title": "Chasing Shadows",
+      "author": "Emma White",
+      "price": 17.00,
+      "release_year": 2019,
+      "genre": "Thriller",
+      "availability": true
+    },
+    {
+      "title": "Twilight Horizon",
+      "author": "Ethan Adams",
+      "price": 19.00,
+      "release_year": 2020,
+      "genre": "Adventure",
+      "availability": false
+    },
+    {
+      "title": "The Clockmaker's Secret",
+      "author": "Anna Davis",
+      "price": 14.99,
+      "release_year": 2021,
+      "genre": "Mystery",
+      "availability": true
+    },
+    {
+      "title": "The Crystal Caverns",
+      "author": "Henry Clark",
+      "price": 35.00,
+      "release_year": 2022,
+      "genre": "Fantasy",
+      "availability": false
+    },
+    {
+      "title": "Echoes of the Past",
+      "author": "Lily Green",
+      "price": 20.50,
+      "release_year": 2019,
+      "genre": "Thriller",
+      "availability": true
+    }
+  ]
+}
