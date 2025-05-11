@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todos with Pagination</title>
+    <style>
+        #container {
+            margin: auto;
+            width: 70%;
+            background-color: cornsilk;
+            padding: 20px;
+        }
+
+        .todo-item {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .pagination {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .pagination button {
+            margin: 0 10px;
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <h1>Todos with Pagination</h1>
+    </center>
+
+    <div id="container">
+        <h2>Todo List</h2>
+        <div id="todos-list"></div>
+
+        <div class="pagination">
+            <button id="prev-btn" onclick="changePage('prev')">Previous</button>
+            <button id="next-btn" onclick="changePage('next')">Next</button>
+        </div>
+    </div>
+
+    <script>
+        const todosPerPage = 10;
+        let currentPage = 1;
+        let totalTodos = 0;
+
+        async function fetchTodos(page) {
+            const res = await fetch(`https://jsonplaceholder.typicode.com/todos?_page=${page}&_limit=${todosPerPage}`);
+            const data = await res.json();
+            totalTodos = 200; 
+            renderTodos(data);
+            updateButtons();
+        }
+
+        function renderTodos(todos) {
+            const todosList = document.getElementById('todos-list');
+            todosList.innerHTML = '';
+
+            todos.forEach(todo => {
+                const todoItem = document.createElement('div');
+                todoItem.classList.add('todo-item');
+                todoItem.innerHTML = `
+                    <input type="checkbox" ${todo.completed ? 'checked' : ''} disabled>
+                    <span>${todo.title}</span>
+                `;
+                todosList.appendChild(todoItem);
+            });
+        }
+
+        function updateButtons() {
+            document.getElementById('prev-btn').disabled = currentPage === 1;
+            document.getElementById('next-btn').disabled = currentPage * todosPerPage >= totalTodos;
+        }
+
+        function changePage(direction) {
+            if (direction === 'prev' && currentPage > 1) {
+                currentPage--;
+            } else if (direction === 'next' && currentPage * todosPerPage < totalTodos) {
+                currentPage++;
+            }
+            fetchTodos(currentPage);
+        }
+
+        window.onload = () => {
+            fetchTodos(currentPage);
+        };
+    </script>
+</body>
+
+</html>
